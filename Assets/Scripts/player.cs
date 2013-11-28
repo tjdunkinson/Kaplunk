@@ -14,6 +14,7 @@ public class player : MonoBehaviour {
 
 	private float destroyDelay;
 	private Vector3 movement;
+	private bool hor,ver;
 
 	
 	// Use this for initialization
@@ -27,21 +28,44 @@ public class player : MonoBehaviour {
 	void Update () {
 		if (Input.GetAxis("Horizontal0"+playerNum) != 0)
 		{
-			//rigidbody.AddForce((Input.GetAxis("Horizontal0"+playerNum))*speed,0,0);
-			movement.x = Input.GetAxis("Horizontal0"+playerNum)*speed;
+			rigidbody.AddForce((Input.GetAxis("Horizontal0"+playerNum))*speed,0,0);
+			hor = true;
+		
+		}
+		else
+		{
+			hor = false;
 		}
 		if (Input.GetAxis("Vertical0"+playerNum) != 0)
 		{
-			//rigidbody.AddForce(0,0,-(Input.GetAxis("Vertical0"+playerNum)*speed));
-			movement.z = Input.GetAxis("Vertical0"+playerNum)*speed;
+			rigidbody.AddForce(0,0,-(Input.GetAxis("Vertical0"+playerNum))*speed);
+			ver = true;
+		}
+		else
+		{
+			ver = false;
 		}
 
-		movement = movement.normalized;
-		rigidbody.AddForce(movement);
-
 		Vector3 current = rigidbody.velocity;
-		Quaternion rot = Quaternion.LookRotation(current);
-		transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
+		Quaternion rot = Quaternion.LookRotation(movement);
+		transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.fixedDeltaTime*playerRotSpeed);
+		if(hor || ver)
+		{
+			if (rigidbody.velocity.magnitude >= speed)
+			{
+				rigidbody.velocity = rigidbody.velocity.normalized*speed;
+			}
+			rigidbody.drag = 0;
+		}
+		else
+		{
+			rigidbody.drag = 2;
+		}
+
+		vel2 = rigidbody.velocity.magnitude;
+	
+
+	
 
 
 
