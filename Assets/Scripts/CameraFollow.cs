@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CameraFollow : MonoBehaviour {
 
+	public int playerNum;
 	public Transform player;
 	public float Distance;
 	public float lerpSpeed;
@@ -10,12 +11,19 @@ public class CameraFollow : MonoBehaviour {
 	private Vector3 finalPos;
 
 	// Use this for initialization
-	void Start () {
+	void Update () {
+
 	
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
+
+		if (player == null)
+		{
+			player = GameObject.Find("Player0"+playerNum).transform;
+		}
+
 
 		finalPos = player.position;
 		finalPos.y = finalPos.y + Distance;

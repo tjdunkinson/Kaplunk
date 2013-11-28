@@ -8,12 +8,14 @@ public class player : MonoBehaviour {
 	public int playerNum;
 	public int Health = 5;
 	public GameObject bomb;
-	public GameObject myRespawner;
-	public Vector3 vel;
-	public float vel2;
+	public float slowDown = 2f;
+
+	//public Vector3 vel;
+	//public float vel2;
 
 	private float destroyDelay;
 	private Vector3 movement;
+	private GameObject myRespawner;
 	private bool hor,ver;
 
 	
@@ -22,7 +24,7 @@ public class player : MonoBehaviour {
 		myRespawner = GameObject.Find("Player0"+playerNum+"Respawner");
 		Respawner r = myRespawner.GetComponent<Respawner>();
 		destroyDelay = (r.setTimer + (r.deathCount*r.penalty))-0.01f;
-
+		gameObject.name = "Player0"+playerNum;
 	}
 	// Update is called once per frame
 	void Update () {
@@ -30,7 +32,6 @@ public class player : MonoBehaviour {
 		{
 			rigidbody.AddForce((Input.GetAxis("Horizontal0"+playerNum))*speed,0,0);
 			hor = true;
-		
 		}
 		else
 		{
@@ -47,8 +48,11 @@ public class player : MonoBehaviour {
 		}
 
 		Vector3 current = rigidbody.velocity;
-		Quaternion rot = Quaternion.LookRotation(movement);
-		transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.fixedDeltaTime*playerRotSpeed);
+		if (current.magnitude != 0)
+		{
+			Quaternion rot = Quaternion.LookRotation(current);
+			transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
+		}
 		if(hor || ver)
 		{
 			if (rigidbody.velocity.magnitude >= speed)
@@ -59,15 +63,8 @@ public class player : MonoBehaviour {
 		}
 		else
 		{
-			rigidbody.drag = 2;
+			rigidbody.drag = slowDown;
 		}
-
-		vel2 = rigidbody.velocity.magnitude;
-	
-
-	
-
-
 
 		if (Input.GetButtonDown("PlaceBomb0"+playerNum))
 		{

@@ -661,10 +661,9 @@ GameObject:
   - 92: {fileID: 931505114}
   - 124: {fileID: 931505113}
   - 81: {fileID: 931505112}
-  - 114: {fileID: 931505117}
   - 114: {fileID: 931505118}
   m_Layer: 8
-  m_Name: PlayerCam
+  m_Name: Player01Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,22 +730,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
---- !u!114 &931505117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 931505111}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885b1972ad11a921d000d37b8d76c639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1520828579}
-  distance: 10
-  height: 5
-  heightDamping: 2
-  rotationDamping: 3
 --- !u!114 &931505118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,6 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cca9b28a333404dab1f4cee5cccb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNum: 1
   player: {fileID: 1520828579}
   Distance: 5
   lerpSpeed: 2.5
@@ -908,9 +892,7 @@ MonoBehaviour:
   playerNum: 1
   Health: 5
   bomb: {fileID: 100000, guid: 42ba90547277a8649885771030ef33c0, type: 2}
-  myRespawner: {fileID: 0}
-  vel: {x: 0, y: 0, z: 0}
-  vel2: 0
+  slowDown: 2
 --- !u!33 &1520828582
 MeshFilter:
   m_ObjectHideFlags: 0
