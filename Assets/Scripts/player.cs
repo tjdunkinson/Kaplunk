@@ -9,8 +9,11 @@ public class player : MonoBehaviour {
 	public int Health = 5;
 	public GameObject bomb;
 	public GameObject myRespawner;
+	public Vector3 vel;
+	public float vel2;
 
 	private float destroyDelay;
+	private Vector3 movement;
 
 	
 	// Use this for initialization
@@ -24,16 +27,23 @@ public class player : MonoBehaviour {
 	void Update () {
 		if (Input.GetAxis("Horizontal0"+playerNum) != 0)
 		{
-			rigidbody.AddForce((Input.GetAxis("Horizontal0"+playerNum)*speed),0,0);
+			//rigidbody.AddForce((Input.GetAxis("Horizontal0"+playerNum))*speed,0,0);
+			movement.x = Input.GetAxis("Horizontal0"+playerNum)*speed;
 		}
 		if (Input.GetAxis("Vertical0"+playerNum) != 0)
 		{
-			rigidbody.AddForce(0,0,-(Input.GetAxis("Vertical0"+playerNum)*speed));
+			//rigidbody.AddForce(0,0,-(Input.GetAxis("Vertical0"+playerNum)*speed));
+			movement.z = Input.GetAxis("Vertical0"+playerNum)*speed;
 		}
+
+		movement = movement.normalized;
+		rigidbody.AddForce(movement);
 
 		Vector3 current = rigidbody.velocity;
 		Quaternion rot = Quaternion.LookRotation(current);
 		transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
+
+
 
 		if (Input.GetButtonDown("PlaceBomb0"+playerNum))
 		{

@@ -524,11 +524,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 894cc9814c2e6224caabcd3c79306e71, type: 2}
       propertyPath: speed
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 894cc9814c2e6224caabcd3c79306e71, type: 2}
       propertyPath: playerRotSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 894cc9814c2e6224caabcd3c79306e71, type: 2}
+      propertyPath: m_Drag
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 894cc9814c2e6224caabcd3c79306e71, type: 2}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 894cc9814c2e6224caabcd3c79306e71, type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 894cc9814c2e6224caabcd3c79306e71, type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 894cc9814c2e6224caabcd3c79306e71, type: 2}
@@ -852,9 +868,9 @@ Rigidbody:
   m_GameObject: {fileID: 1520828578}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 2
+  m_Drag: .100000001
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
@@ -871,12 +887,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0dd094deb365247b09b382afef21cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 8
   playerRotSpeed: 10
   playerNum: 1
   Health: 5
   bomb: {fileID: 100000, guid: 42ba90547277a8649885771030ef33c0, type: 2}
   myRespawner: {fileID: 0}
+  vel: {x: 0, y: 0, z: 0}
+  vel2: 0
 --- !u!33 &1520828582
 MeshFilter:
   m_ObjectHideFlags: 0
