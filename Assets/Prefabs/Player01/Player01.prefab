@@ -165,7 +165,7 @@ MonoBehaviour:
   playerNum: 1
   Health: 5
   bomb: {fileID: 100000, guid: 42ba90547277a8649885771030ef33c0, type: 2}
-  myRespawner: {fileID: 0}
+  slowDown: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
