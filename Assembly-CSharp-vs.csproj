@@ -46,13 +46,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LightProperties.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\GroundGen.cs" />
      <Compile Include="Assets\Scripts\Respawner.cs" />
      <Compile Include="Assets\Scripts\WallAction.cs" />
      <Compile Include="Assets\Scripts\bomb.cs" />
+     <Compile Include="Assets\Scripts\light.cs" />
      <Compile Include="Assets\Scripts\player.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Shaders\Diffuse.shader" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
