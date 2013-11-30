@@ -9,6 +9,7 @@ public class player : MonoBehaviour {
 	public int Health = 5;
 	public GameObject bomb;
 	public float slowDown = 2f;
+	public string team;
 
 	//public Vector3 vel;
 	//public float vel2;
@@ -17,6 +18,8 @@ public class player : MonoBehaviour {
 	private Vector3 movement;
 	private GameObject myRespawner;
 	private bool hor,ver;
+	private Light myLamp;
+	private LayerMask la;
 
 	
 	// Use this for initialization
@@ -25,6 +28,9 @@ public class player : MonoBehaviour {
 		Respawner r = myRespawner.GetComponent<Respawner>();
 		destroyDelay = (r.setTimer + (r.deathCount*r.penalty))-0.01f;
 		gameObject.name = "Player0"+playerNum;
+		myLamp = GetComponentInChildren<Light>();
+
+		la = LayerMask.NameToLayer(team);
 	}
 	// Update is called once per frame
 	void Update () {
@@ -48,7 +54,7 @@ public class player : MonoBehaviour {
 		}
 
 		Vector3 current = rigidbody.velocity;
-		if (current.magnitude != 0)
+		if (current.magnitude >= 1)
 		{
 			Quaternion rot = Quaternion.LookRotation(current);
 			transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
@@ -73,6 +79,18 @@ public class player : MonoBehaviour {
 			
 			GameObject bombPlace;
 			bombPlace = Instantiate(bomb,hit.collider.gameObject.transform.position,Quaternion.Euler(Vector3.up)) as GameObject;
+		}
+		if (Input.GetButtonDown("LightSwitch0"+playerNum))
+		{
+			myLamp.gameObject.SetActive(!myLamp.gameObject.activeSelf);
+			if (myLamp.gameObject.activeSelf == true)
+			{
+				gameObject.layer = 10;
+			}
+			else
+			{
+				gameObject.layer = la.value;
+			}
 		}
 	
 
