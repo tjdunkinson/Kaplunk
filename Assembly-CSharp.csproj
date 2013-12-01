@@ -46,9 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\LightProperties.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\GroundGen.cs" />
+     <Compile Include="Assets\Scripts\LightProperties.cs" />
      <Compile Include="Assets\Scripts\Respawner.cs" />
      <Compile Include="Assets\Scripts\WallAction.cs" />
      <Compile Include="Assets\Scripts\bomb.cs" />

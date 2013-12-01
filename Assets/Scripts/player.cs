@@ -19,6 +19,7 @@ public class player : MonoBehaviour {
 	private GameObject myRespawner;
 	private bool hor,ver;
 	private LayerMask la;
+	private CharacterController charCont;
 
 	
 	// Use this for initialization
@@ -27,47 +28,38 @@ public class player : MonoBehaviour {
 		Respawner r = myRespawner.GetComponent<Respawner>();
 		destroyDelay = (r.setTimer + (r.deathCount*r.penalty))-0.01f;
 		gameObject.name = "Player0"+playerNum;
+		charCont = GetComponent<CharacterController>();
 
 		la = LayerMask.NameToLayer(team);
 	}
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetAxis("Horizontal0"+playerNum) != 0)
-		{
-			rigidbody.AddForce((Input.GetAxis("Horizontal0"+playerNum))*speed,0,0);
-			hor = true;
-		}
+		{hor = true;}
 		else
-		{
-			hor = false;
-		}
+		{hor = false;}
 		if (Input.GetAxis("Vertical0"+playerNum) != 0)
-		{
-			rigidbody.AddForce(0,0,-(Input.GetAxis("Vertical0"+playerNum))*speed);
-			ver = true;
-		}
+		{ver = true;}
 		else
-		{
-			ver = false;
-		}
+		{ver = false;}
 
-		Vector3 current = rigidbody.velocity;
-		if (current.magnitude >= 0.1)
-		{
-			Quaternion rot = Quaternion.LookRotation(current);
-			transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
-		}
 		if(hor || ver)
 		{
-			if (rigidbody.velocity.magnitude >= speed)
+			//movement = transform.position;
+			movement.x = Input.GetAxis("Horizontal0"+playerNum)*speed;
+			movement.z = Input.GetAxis("Vertical0"+playerNum)*speed;
+			//transform.position = movement;
+			charCont.Move(movement);
+			if (movement.magnitude > speed)
 			{
-				rigidbody.velocity = rigidbody.velocity.normalized*speed;
+				movement = movement.normalized*speed;
 			}
-			rigidbody.drag = 0;
 		}
-		else
+
+		if (movement.magnitude > 0.01)
 		{
-			rigidbody.drag = slowDown;
+			Quaternion rot = Quaternion.LookRotation(movement);
+			transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
 		}
 
 		if (Input.GetButtonDown("PlaceBomb0"+playerNum))
@@ -83,7 +75,7 @@ public class player : MonoBehaviour {
 	}
 	void Death ()
 	{
-		rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+		//rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 		myRespawner.SendMessage("startRespawn");
 		Destroy(this.gameObject,destroyDelay);
 	}
