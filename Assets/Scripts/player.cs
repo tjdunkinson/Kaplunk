@@ -10,6 +10,7 @@ public class player : MonoBehaviour {
 	public GameObject bomb;
 	public float slowDown = 2f;
 	public string team;
+	public GameObject myLamp;
 
 	//public Vector3 vel;
 	//public float vel2;
@@ -20,6 +21,7 @@ public class player : MonoBehaviour {
 	private bool hor,ver;
 	private LayerMask la;
 	private CharacterController charCont;
+
 
 	
 	// Use this for initialization
@@ -69,6 +71,10 @@ public class player : MonoBehaviour {
 			
 			GameObject bombPlace;
 			bombPlace = Instantiate(bomb,hit.collider.gameObject.transform.position,Quaternion.Euler(Vector3.up)) as GameObject;
+		}
+		if (Input.GetButtonDown("EnableLight0"+playerNum))
+		{
+			myLamp.SetActive(!myLamp.activeSelf);
 		}
 	
 

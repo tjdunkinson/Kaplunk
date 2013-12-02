@@ -104,6 +104,7 @@ MonoBehaviour:
   bomb: {fileID: 100000, guid: 42ba90547277a8649885771030ef33c0, type: 2}
   slowDown: 2
   team: RedTeam
+  myLamp: {fileID: 100002}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
