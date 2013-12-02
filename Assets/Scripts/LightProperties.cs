@@ -25,14 +25,19 @@ public class LightProperties : MonoBehaviour {
 		{
 			renderer.material.SetVector("_Color",set);
 		}
+		lit = false;
+		shadowValue = 0;
 	}
 	void Illuminate (float shadow) 
 	{
-		lit = true;
-		shadowValue = shadow;
-	}
-	void ResetLight ()
-	{
-		lit = false;
+		if (!lit)
+		{
+			lit = true;
+			shadowValue += shadow;
+		}
+		else
+		{
+			shadowValue += shadow;
+		}
 	}
 }
