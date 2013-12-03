@@ -34,6 +34,10 @@ public class light : MonoBehaviour {
 					litObjects[i].SendMessage("Illuminate",shadow,SendMessageOptions.DontRequireReceiver);
 				}
 			}
+			if (litObjects[i].tag == "Player")
+			{
+				litObjects[i].SendMessage("Illuminate",SendMessageOptions.DontRequireReceiver);
+			}
 		}
 	}
 }

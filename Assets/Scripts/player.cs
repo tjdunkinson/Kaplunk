@@ -9,8 +9,9 @@ public class player : MonoBehaviour {
 	public int Health = 5;
 	public GameObject bomb;
 	public float slowDown = 2f;
-	public string team;
+	public string myTeam,mutual;
 	public GameObject myLamp;
+	public Color visable,invisible;
 
 	//public Vector3 vel;
 	//public float vel2;
@@ -19,8 +20,9 @@ public class player : MonoBehaviour {
 	private Vector3 movement;
 	private GameObject myRespawner;
 	private bool hor,ver;
-	private LayerMask la;
+	private LayerMask teamLayer,mutLayer;
 	private CharacterController charCont;
+	private bool lit;
 
 
 	
@@ -32,7 +34,8 @@ public class player : MonoBehaviour {
 		gameObject.name = "Player0"+playerNum;
 		charCont = GetComponent<CharacterController>();
 
-		la = LayerMask.NameToLayer(team);
+		teamLayer = LayerMask.NameToLayer(myTeam);
+		mutLayer = LayerMask.NameToLayer(mutual);
 	}
 	// Update is called once per frame
 	void Update () {
@@ -76,14 +79,30 @@ public class player : MonoBehaviour {
 		{
 			myLamp.SetActive(!myLamp.activeSelf);
 		}
-	
-
+	}
+	void LateUpdate ()
+	{
+		if (lit)
+		{
+			gameObject.layer = mutLayer.value;
+			renderer.material.color = visable;
+		}
+		else
+		{
+			gameObject.layer = teamLayer.value;
+			renderer.material.color = invisible;
+		}
+		lit = false;
 	}
 	void Death ()
 	{
 		//rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 		myRespawner.SendMessage("startRespawn");
 		Destroy(this.gameObject,destroyDelay);
+	}
+	void Illuminate ()
+	{
+		lit = true;
 	}
 	
 }
