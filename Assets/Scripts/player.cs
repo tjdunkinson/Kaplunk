@@ -22,7 +22,7 @@ public class player : MonoBehaviour {
 	private bool hor,ver;
 	private LayerMask teamLayer,mutLayer;
 	private CharacterController charCont;
-	private bool lit;
+	private bool lit,dead = false;
 
 
 	
@@ -36,48 +36,52 @@ public class player : MonoBehaviour {
 
 		teamLayer = LayerMask.NameToLayer(myTeam);
 		mutLayer = LayerMask.NameToLayer(mutual);
+		dead = false;
 	}
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxis("Horizontal0"+playerNum) != 0)
-		{hor = true;}
-		else
-		{hor = false;}
-		if (Input.GetAxis("Vertical0"+playerNum) != 0)
-		{ver = true;}
-		else
-		{ver = false;}
-
-		if(hor || ver)
+		if (!dead)
 		{
-			//movement = transform.position;
-			movement.x = Input.GetAxis("Horizontal0"+playerNum)*speed;
-			movement.z = Input.GetAxis("Vertical0"+playerNum)*speed;
-			//transform.position = movement;
-			charCont.Move(movement);
-			if (movement.magnitude > speed)
+			if (Input.GetAxis("Horizontal0"+playerNum) != 0)
+			{hor = true;}
+			else
+			{hor = false;}
+			if (Input.GetAxis("Vertical0"+playerNum) != 0)
+			{ver = true;}
+			else
+			{ver = false;}
+
+			if(hor || ver)
 			{
-				movement = movement.normalized*speed;
+				//movement = transform.position;
+				movement.x = Input.GetAxis("Horizontal0"+playerNum)*speed;
+				movement.z = Input.GetAxis("Vertical0"+playerNum)*speed;
+				//transform.position = movement;
+				charCont.Move(movement);
+				if (movement.magnitude > speed)
+				{
+					movement = movement.normalized*speed;
+				}
 			}
-		}
 
-		if (movement.magnitude > 0.01)
-		{
-			Quaternion rot = Quaternion.LookRotation(movement);
-			transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
-		}
+			if (movement.magnitude > 0.01)
+			{
+				Quaternion rot = Quaternion.LookRotation(movement);
+				transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
+			}
 
-		if (Input.GetButtonDown("PlaceBomb0"+playerNum))
-		{
-			RaycastHit hit;
-			Physics.Raycast(this.transform.position,-transform.up,out hit,1f);
-			
-			GameObject bombPlace;
-			bombPlace = Instantiate(bomb,hit.collider.gameObject.transform.position,Quaternion.Euler(Vector3.up)) as GameObject;
-		}
-		if (Input.GetButtonDown("EnableLight0"+playerNum))
-		{
-			myLamp.SetActive(!myLamp.activeSelf);
+			if (Input.GetButtonDown("PlaceBomb0"+playerNum))
+			{
+				RaycastHit hit;
+				Physics.Raycast(this.transform.position,-transform.up,out hit,1f);
+				
+				GameObject bombPlace;
+				bombPlace = Instantiate(bomb,hit.collider.gameObject.transform.position,Quaternion.Euler(Vector3.up)) as GameObject;
+			}
+			if (Input.GetButtonDown("EnableLight0"+playerNum))
+			{
+				myLamp.SetActive(!myLamp.activeSelf);
+			}
 		}
 	}
 	void LateUpdate ()
@@ -99,6 +103,7 @@ public class player : MonoBehaviour {
 		//rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 		myRespawner.SendMessage("startRespawn");
 		Destroy(this.gameObject,destroyDelay);
+		dead = true;
 	}
 	void Illuminate ()
 	{

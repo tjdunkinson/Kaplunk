@@ -6,10 +6,16 @@ public class bomb : MonoBehaviour {
 	
 	public float timer;
 	public float setRadius;
-	
+	public GameObject explosion;
+
+	private MeshRenderer rend;
 	// Use this for initialization
 	void OnDrawGizmosSelected () {
 		Gizmos.DrawWireSphere(this.transform.position,setRadius);
+	}
+	void Start()
+	{
+		rend = GetComponent<MeshRenderer>();
 	}
 	void Update ()
 	{
@@ -36,15 +42,19 @@ public class bomb : MonoBehaviour {
 				hitObjects[i].SendMessage("Death",options);
 			}
 			//Blackens Radius
-			//if (hitObjects[i].tag == "Ground")
-			//{
-			//	hitObjects[i].renderer.material.color = Color.black;
-			//}
+			if (hitObjects[i].tag == "Ground")
+			{
+				Vector3 pos = hitObjects[i].transform.position;
+				pos.y += 0.1f;
+				Instantiate(explosion,pos,Quaternion.Euler(Vector3.up));
+			}
 			i++;
+			rend.enabled = false;
 		}
 		if (i == hitObjects.Length)
 		{
-			Destroy (this.gameObject,0.02f);
+			//Instantiate(explosion,transform.position,Quaternion.Euler(Vector3.up));
+			Destroy (this.gameObject);
 		}
     }
 }
