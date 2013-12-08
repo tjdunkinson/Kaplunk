@@ -68,3 +68,19 @@ InputManager:
     type: 0
     axis: 1
     joyNum: 1
+  - serializedVersion: 3
+    m_Name: Attack01
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: space
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 1
+    joyNum: 1

@@ -36,7 +36,7 @@ public class Respawner : MonoBehaviour {
 	{
 		deathCount ++;
 		startTimer = true;
-		Instantiate(myPlayer);
+		Instantiate(myPlayer,this.transform.position,Quaternion.Euler(myPlayer.transform.rotation.eulerAngles));
 		startTimer = false;
 		timer = setTimer + (deathCount*penalty);
 

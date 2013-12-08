@@ -4,7 +4,8 @@ using System.Collections;
 public class GroundGen : MonoBehaviour {
 	
 	public int coloumn, row;
-	public GameObject tile;
+	//public GameObject tile;
+	public GameObject[] chunk;
 	
 
 	// Use this for initialization
@@ -14,11 +15,12 @@ public class GroundGen : MonoBehaviour {
 		{
 			for (int n = 0; n < coloumn; n++)
 			{
-				GameObject tilePlace;
-				Vector3 placement = new Vector3(n,0,i);
-				tilePlace = Instantiate(tile,placement,Quaternion.Euler(tile.transform.rotation.eulerAngles)) as GameObject;
-				tilePlace.name = "Tile "+i+","+n;
-				tilePlace.transform.parent = this.transform;
+				GameObject chunkPlace;
+				GameObject chunkPick = chunk[Random.Range(0,chunk.Length)];
+				Vector3 placement = new Vector3(n*10,0,i*10);
+				chunkPlace = Instantiate(chunkPick,placement,Quaternion.Euler(chunkPick.transform.rotation.eulerAngles)) as GameObject;
+				chunkPlace.name = "Chunk "+i+", "+n;
+				chunkPlace.transform.parent = this.transform;
 			}
 		}
 	

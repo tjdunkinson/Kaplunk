@@ -17,9 +17,12 @@ public class LightProperties : MonoBehaviour {
 	{
 		if (lit)
 		{
-			update = set;
-			update.w = shadowValue;
-			renderer.material.SetVector("_Color",update);
+			if (shadowValue > set.w)
+			{
+				update = set;
+				update.w = shadowValue;
+				renderer.material.SetVector("_Color",update);
+			}
 		}
 		else 
 		{

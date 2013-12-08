@@ -23,7 +23,7 @@ public class WallAction : MonoBehaviour {
 	{
 		Destroy (this.gameObject);
 	}
-	void OnMouseDown()
+	void Hurt()
 	{
 		Health--;
 	}

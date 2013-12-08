@@ -39,7 +39,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: .0882353187, g: .0882353187, b: .0882353187, a: .0196078438}
+  m_BackGroundColor: {r: .0955882072, g: .0836396813, b: .0836396813, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -54,7 +54,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 7424
+    m_Bits: 7425
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
