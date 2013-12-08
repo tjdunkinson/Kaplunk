@@ -6,11 +6,16 @@ public class GroundGen : MonoBehaviour {
 	public int coloumn, row;
 	//public GameObject tile;
 	public GameObject[] chunk;
+
+	private int rowHalf,colHalf;
 	
 
 	// Use this for initialization
 	void Start () {
-		
+
+		rowHalf = row/2;
+		colHalf = coloumn/2;
+
 		for(int i = 0; i < row; i++)
 		{
 			for (int n = 0; n < coloumn; n++)

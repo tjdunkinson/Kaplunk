@@ -22,8 +22,11 @@ public class ResourceCollector : MonoBehaviour {
 		{
 			if (resource > 0)
 			{
-				give.resource++;
-				resource--;
+				if (give.resource < 10)
+				{
+					give.resource++;
+					resource--;
+				}
 			}
 		}
 	}
