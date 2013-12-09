@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class ChunkGen : MonoBehaviour {
-	
+	/// <summary>
+	/// THIS IS STILL BROKEN
+	/// </summary>
 	public int column, row;
 	public GameObject[] chunk;
 	public GameObject [] chunkList;
@@ -23,6 +25,7 @@ public class ChunkGen : MonoBehaviour {
 		rowHalf = (Mathf.RoundToInt(rowHalf)+1);
 		colHalf = column/2;
 		colHalf = (Mathf.RoundToInt(colHalf)+1);
+		
 
 		int list = row*column;
 		chunkList = new GameObject[list];
@@ -40,6 +43,7 @@ public class ChunkGen : MonoBehaviour {
 
 					if (c == (colHalf-1) && r == (rowHalf-1))
 					{
+						listCount++;
 						reverse = true;
 						chunkPlace = Instantiate(chunk[0],placement,Quaternion.Euler(transform.rotation.eulerAngles)) as GameObject;
 						chunkPlace.name = "Chunk "+r+", "+c;
@@ -61,29 +65,35 @@ public class ChunkGen : MonoBehaviour {
 		if (reverse)
 		{
 			int revListCount = listCount;
-			Vector3 revPlacement = chunkList[listCount].transform.position;
-			Vector2 gridNum = new Vector2(revPlacement.x/10,revPlacement.z/10);
-			int midNum = Mathf.RoundToInt(gridNum.x);
 			revListCount--;
+			Vector3 revPlacement = chunkList[listCount].transform.position;
+			int midNum = Mathf.RoundToInt((revPlacement.x/10));
+			GameObject revChunkPlace;
+			GameObject revChunkPick = chunkList[revListCount];
+			//revPlacement = revChunkPick.transform.position;
 
-			for(int r = 0; r < rowHalf; r++)
+			for (int c = 3; c < column; c++)
 			{
-				GameObject revChunkPlace;
-				GameObject revChunkPick = chunkList[revListCount];
-				revPlacement = revChunkPick.transform.position;
+				revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x)*10;
+				revPlacement.z = (((midNum - revPlacement.z)*2)+revPlacement.z)*10;
+				//Vector3 revPlaceRot = (revChunkPick.transform.localRotation.eulerAngles.y + 180);
+				revChunkPlace = Instantiate(revChunkPick,revPlacement,Quaternion.Euler(revChunkPick.transform.rotation.eulerAngles)) as GameObject;
+
+			}
+
+			for(int r = 1; r < rowHalf; r++)
+			{
+
 
 				for (int c = 0; c < column; c++)
 				{
-					revPlacement.x = (midNum - revPlacement.x);
-					revPlacement.x = revPlacement.x * 2;
-					revPlacement.z = (midNum - revPlacement.z);
-					revPlacement.z = revPlacement.z * 2;
-					print (revPlacement);
-					//not working
+						
+						//revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x)*10;
+						//revPlacement.z = (((midNum - revPlacement.z)*2)+revPlacement.z)*10;
+						
 
 				}
 			}
-					
 		}
 	}
 	
