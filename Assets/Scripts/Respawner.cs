@@ -13,6 +13,8 @@ public class Respawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		timer = setTimer;
+		GameObject startSpawn;
+		startSpawn = Instantiate(myPlayer,this.transform.position,Quaternion.Euler(myPlayer.transform.rotation.eulerAngles))as GameObject;
 	
 	}
 	

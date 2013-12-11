@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour {
 	void Start () 
 	{
 		resourceCount = GetComponentInChildren<TextMesh> ();
-		plyr = player.GetComponent<player> ();
+		//plyr = player.GetComponent<player> ();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +25,7 @@ public class CameraFollow : MonoBehaviour {
 		if (player == null)
 		{
 			player = GameObject.Find("Player0"+playerNum).transform;
+			plyr = player.GetComponent<player> ();
 		}
 		finalPos = player.position;
 		finalPos.y = finalPos.y + Distance;
