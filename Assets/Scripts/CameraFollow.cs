@@ -9,11 +9,14 @@ public class CameraFollow : MonoBehaviour {
 	public float lerpSpeed;
 
 	private Vector3 finalPos;
+	private TextMesh resourceCount;
+	private player plyr;
 
 	// Use this for initialization
-	void Update () {
-
-	
+	void Start () 
+	{
+		resourceCount = GetComponentInChildren<TextMesh> ();
+		plyr = player.GetComponent<player> ();
 	}
 	
 	// Update is called once per frame
@@ -23,12 +26,11 @@ public class CameraFollow : MonoBehaviour {
 		{
 			player = GameObject.Find("Player0"+playerNum).transform;
 		}
-
-
 		finalPos = player.position;
 		finalPos.y = finalPos.y + Distance;
-
 		transform.position = Vector3.Lerp(transform.position,finalPos,Time.deltaTime*lerpSpeed);
+
+		resourceCount.text = plyr.resource.ToString ();
 
 	}
 }

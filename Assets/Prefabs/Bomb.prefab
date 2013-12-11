@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 3
-  setRadius: 5
+  setRadius: 2
   explosion: {fileID: 100000, guid: 70a470afc07d4de4aadb5a56eee24e42, type: 2}
 --- !u!1001 &100100000
 Prefab:

@@ -3,11 +3,14 @@ using System.Collections;
 
 public class ChunkGen : MonoBehaviour {
 	/// <summary>
-	/// THIS IS STILL BROKEN
+	/// Chunks don't rotate to mirror the other side yet
+	/// Fix this... Eventually
 	/// </summary>
 	public int column, row;
-	public GameObject[] chunk;
+	public GameObject[] chunkPrefabs;
 	public GameObject [] chunkList;
+	public GameObject redSpawn,redCollection;
+	public GameObject blueSpawn,blueCollection;
 	public int rowHalf,colHalf;
 
 	private bool halfHit = false;
@@ -38,18 +41,19 @@ public class ChunkGen : MonoBehaviour {
 				for (int c = 0; c < column; c++)
 				{
 					GameObject chunkPlace;
-					GameObject chunkPick = chunk[Random.Range(0,chunk.Length)];
+					GameObject chunkPick = chunkPrefabs[Random.Range(0,chunkPrefabs.Length)];
 					Vector3 placement = new Vector3(c*10,0,r*10);
 
 					if (c == (colHalf-1) && r == (rowHalf-1))
 					{
 						listCount++;
 						reverse = true;
-						chunkPlace = Instantiate(chunk[0],placement,Quaternion.Euler(transform.rotation.eulerAngles)) as GameObject;
+						chunkPlace = Instantiate(chunkPrefabs[0],placement,Quaternion.Euler(transform.rotation.eulerAngles)) as GameObject;
 						chunkPlace.name = "Chunk "+r+", "+c;
 						chunkPlace.transform.parent = this.transform;
 						chunkList[listCount] = chunkPlace;
 						break;
+
 					}
 					else
 					{
@@ -65,20 +69,25 @@ public class ChunkGen : MonoBehaviour {
 		if (reverse)
 		{
 			int revListCount = listCount;
-			revListCount--;
 			Vector3 revPlacement = chunkList[listCount].transform.position;
-			int midNum = Mathf.RoundToInt((revPlacement.x/10));
+			int midNum = Mathf.RoundToInt((revPlacement.x));
+			revListCount--;
 			GameObject revChunkPlace;
-			GameObject revChunkPick = chunkList[revListCount];
-			//revPlacement = revChunkPick.transform.position;
+			GameObject revChunkPick;
 
-			for (int c = 3; c < column; c++)
+
+			for (int c = colHalf; c < column; c++)
 			{
-				revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x)*10;
-				revPlacement.z = (((midNum - revPlacement.z)*2)+revPlacement.z)*10;
+				listCount++;
+				revChunkPick = chunkList[revListCount];
+				revPlacement = revChunkPick.transform.position;
+				revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x);
 				//Vector3 revPlaceRot = (revChunkPick.transform.localRotation.eulerAngles.y + 180);
 				revChunkPlace = Instantiate(revChunkPick,revPlacement,Quaternion.Euler(revChunkPick.transform.rotation.eulerAngles)) as GameObject;
-
+				revChunkPlace.name = "Chunk "+midNum/10+", "+c;
+				revChunkPlace.transform.parent = this.transform;
+				chunkList[listCount] = revChunkPlace;
+				revListCount--;
 			}
 
 			for(int r = 1; r < rowHalf; r++)
@@ -87,13 +96,24 @@ public class ChunkGen : MonoBehaviour {
 
 				for (int c = 0; c < column; c++)
 				{
-						
-						//revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x)*10;
-						//revPlacement.z = (((midNum - revPlacement.z)*2)+revPlacement.z)*10;
-						
-
+					listCount++;
+					revChunkPick = chunkList[revListCount];
+					revPlacement = revChunkPick.transform.position;
+					revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x);
+					revPlacement.z = (((midNum - revPlacement.z)*2)+revPlacement.z);
+					//Vector3 revPlaceRot = (revChunkPick.transform.localRotation.eulerAngles.y + 180);
+					revChunkPlace = Instantiate(revChunkPick,revPlacement,Quaternion.Euler(revChunkPick.transform.rotation.eulerAngles)) as GameObject;
+					revChunkPlace.name = "Chunk "+(r+(midNum/10))+", "+c;
+					revChunkPlace.transform.parent = this.transform;
+					chunkList[listCount] = revChunkPlace;
+					revListCount--;
 				}
 			}
+			Vector3 redBasePos = new Vector3(midNum,0,(chunkList[0].transform.position.z)-10); 
+			Vector3 bluBasePos = new Vector3(midNum,0,(row*10));
+
+			Instantiate(redSpawn,redBasePos,Quaternion.Euler(transform.rotation.eulerAngles));
+			Instantiate(blueSpawn,bluBasePos,Quaternion.Euler(transform.rotation.eulerAngles));
 		}
 	}
 	
