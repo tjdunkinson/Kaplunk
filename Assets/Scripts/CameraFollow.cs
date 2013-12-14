@@ -16,17 +16,17 @@ public class CameraFollow : MonoBehaviour {
 	void Start () 
 	{
 		resourceCount = GetComponentInChildren<TextMesh> ();
-		//plyr = player.GetComponent<player> ();
+		plyr = player.GetComponent<player> ();
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
 
-		if (player == null)
+		/*if (player == null)
 		{
 			player = GameObject.Find("Player0"+playerNum).transform;
 			plyr = player.GetComponent<player> ();
-		}
+		}*/
 		finalPos = player.position;
 		finalPos.y = finalPos.y + Distance;
 		transform.position = Vector3.Lerp(transform.position,finalPos,Time.deltaTime*lerpSpeed);

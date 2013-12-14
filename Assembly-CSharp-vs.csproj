@@ -50,9 +50,11 @@
      <Compile Include="Assets\Scripts\ChunkGen.cs" />
      <Compile Include="Assets\Scripts\GroundGen.cs" />
      <Compile Include="Assets\Scripts\LightProperties.cs" />
+     <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\ResourceCollector.cs" />
      <Compile Include="Assets\Scripts\ResourceGiver.cs" />
      <Compile Include="Assets\Scripts\Respawner.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\WallAction.cs" />
      <Compile Include="Assets\Scripts\bomb.cs" />
      <Compile Include="Assets\Scripts\explosion.cs" />

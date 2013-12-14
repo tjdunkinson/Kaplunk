@@ -3,7 +3,7 @@ using System.Collections;
 
 public class player : MonoBehaviour {
 	
-	public float speed;
+	public float setSpeed;
 	public float playerRotSpeed;
 	public int playerNum;
 	public int Health = 5;
@@ -13,11 +13,11 @@ public class player : MonoBehaviour {
 	public GameObject myLamp;
 	public Color visable,invisible;
 	public LayerMask originTeam;
+	public GameObject myRespawner;
 
-
+	private float speed;
 	private float destroyDelay;
 	private Vector3 movement;
-	private GameObject myRespawner;
 	private bool hor,ver;
 	private LayerMask teamLayer,mutLayer;
 	private CharacterController charCont;
@@ -30,8 +30,7 @@ public class player : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		//Increses respawn time for each death
-		myRespawner = GameObject.Find("Player0"+playerNum+"Respawner");
-		Respawner r = myRespawner.GetComponent<Respawner>();
+		Spawner r = myRespawner.GetComponent<Spawner> ();
 		destroyDelay = (r.setTimer + (r.deathCount*r.penalty))-0.01f;
 		gameObject.name = "Player0"+playerNum;
 
@@ -39,6 +38,9 @@ public class player : MonoBehaviour {
 
 		teamLayer = LayerMask.NameToLayer(myTeam);
 		mutLayer = LayerMask.NameToLayer(mutual);
+
+		resource = 0;
+		speed = setSpeed;
 
 		dead = false;
 	}
@@ -74,6 +76,16 @@ public class player : MonoBehaviour {
 			{
 				Quaternion rot = Quaternion.LookRotation(movement);
 				transform.rotation = Quaternion.Slerp(transform.rotation,rot,Time.deltaTime*playerRotSpeed);
+			}
+			if (resource > 0)
+			{
+				float slow = setSpeed / 2;
+				slow = slow / 10;
+				speed = setSpeed - (slow*resource);
+			}
+			else
+			{
+				speed = setSpeed;
 			}
 
 			//Places a bomb
