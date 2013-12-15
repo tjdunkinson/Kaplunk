@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour {
 	public int myPlayerNum;
 	public string Mutual, Team;
 	public Color lit, unlit;
+	public LayerMask camLM;
 
 	public float setTimer = 5f;
 	public float penalty = 0.5f;
@@ -31,16 +32,17 @@ public class Spawner : MonoBehaviour {
 		myPlayerScript.invisible = unlit;
 		myPlayerScript.myRespawner = this.gameObject;
 		myPlayerScript.enabled = true;
-
-		myPlayerCam = playerCamBase;
-		myPlayerCam.name = "PlayerCam0" + myPlayerNum;
-		CameraFollow myPlyrCamScript = myPlayerCam.GetComponent<CameraFollow> ();
-		myPlyrCamScript.playerNum = myPlayerNum;
-
 		GameObject spawnPlayer;
 		spawnPlayer = Instantiate (myPlayer, transform.position, Quaternion.Euler (myPlayer.transform.rotation.eulerAngles)) as GameObject;
+
+		myPlayerCam = playerCamBase;
+		myPlayerCam.name = "PlayerCam0"+myPlayerNum;
+		CameraFollow camScript = myPlayerCam.GetComponent<CameraFollow>();
+		camScript.playerNum = myPlayerNum;
+		camScript.player = spawnPlayer.transform;
 		GameObject spawnCam;
-		spawnCam = Instantiate (myPlayerCam) as GameObject;
+		spawnCam = Instantiate(myPlayerCam) as GameObject;
+		spawnCam.camera.cullingMask = camLM;
 
 	
 	}
