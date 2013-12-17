@@ -5,6 +5,7 @@ public class player : MonoBehaviour {
 	
 	public float setSpeed;
 	public float playerRotSpeed;
+	public int setResourceMax;
 	public int playerNum;
 	public int Health = 5;
 	public int resource;
@@ -16,6 +17,7 @@ public class player : MonoBehaviour {
 	public GameObject myRespawner;
 
 	private float speed;
+	private int resourceMax;
 	private float destroyDelay;
 	private Vector3 movement;
 	private bool hor,ver;
@@ -43,6 +45,8 @@ public class player : MonoBehaviour {
 		speed = setSpeed;
 
 		dead = false;
+
+		resourceMax = setResourceMax;
 	}
 	void Update () {
 		//Disables the player from doing anything when dead
@@ -169,7 +173,7 @@ public class player : MonoBehaviour {
 	}
 	void Collect ()
 	{
-		if (resource < 10)
+		if (resource < resourceMax)
 		{
 			resource++;
 		}

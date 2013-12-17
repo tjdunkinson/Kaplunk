@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setSpeed: .100000001
   playerRotSpeed: 15
+  setResourceMax: 10
   playerNum: 1
   Health: 5
   resource: 0
