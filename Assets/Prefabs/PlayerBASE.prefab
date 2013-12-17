@@ -29,7 +29,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 143: {fileID: 14300000}
   m_Layer: 8
-  m_Name: Player01
+  m_Name: PlayerBASE
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
