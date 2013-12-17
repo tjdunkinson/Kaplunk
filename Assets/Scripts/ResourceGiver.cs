@@ -14,10 +14,7 @@ public class ResourceGiver : MonoBehaviour {
 	}
 	void Hurt (GameObject miner)
 	{
-		player give = miner.GetComponent<player>();
-		if (give.resource < 10)
-		{
-			give.resource++;
-		}
+		miner.SendMessage ("Collect", SendMessageOptions.DontRequireReceiver);
+
 	}
 }

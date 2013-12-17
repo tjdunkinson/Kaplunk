@@ -1,4 +1,4 @@
-using UnityEngine;
+	using UnityEngine;
 using System.Collections;
 
 public class player : MonoBehaviour {
@@ -166,6 +166,13 @@ public class player : MonoBehaviour {
 	void Hurt(GameObject miner)
 	{
 		Health--;
+	}
+	void Collect ()
+	{
+		if (resource < 10)
+		{
+			resource++;
+		}
 	}
 	
 }

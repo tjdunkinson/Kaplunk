@@ -111,6 +111,9 @@ MonoBehaviour:
   camLM:
     serializedVersion: 2
     m_Bits: 7425
+  originLM:
+    serializedVersion: 2
+    m_Bits: 256
   setTimer: 5
   penalty: .5
   deathCount: 0
@@ -182,9 +185,9 @@ MonoBehaviour:
   - {fileID: 100292, guid: cccf5feefd7949d4081c1f3a123fab88, type: 2}
   chunkList: []
   redSpawn: {fileID: 100272, guid: dd5b9d59eedd6ab4292fea374bc756d3, type: 2}
-  redCollection: {fileID: 0}
+  redCollection: {fileID: 100112, guid: e589f0cb89a09c0408ee34e4a9fc07ca, type: 2}
   blueSpawn: {fileID: 100272, guid: 933dfbf7c4c9cac4bb33beac7737f040, type: 2}
-  blueCollection: {fileID: 0}
+  blueCollection: {fileID: 100112, guid: 4a8af56225f80f14c9b4239ddbaff28b, type: 2}
   rowHalf: 0
   colHalf: 0
   reverse: 0

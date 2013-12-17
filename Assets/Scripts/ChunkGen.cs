@@ -3,8 +3,9 @@ using System.Collections;
 
 public class ChunkGen : MonoBehaviour {
 	/// <summary>
-	/// Chunks don't rotate to mirror the other side yet
-	/// Fix this... Eventually
+	/// This now works, just needs the chunks to rotate during the reverse step
+	/// of the generation, but this requires the way all the chunks are built 
+	/// to be re-done
 	/// </summary>
 	public int column, row;
 	public GameObject[] chunkPrefabs;
@@ -114,6 +115,11 @@ public class ChunkGen : MonoBehaviour {
 
 			Instantiate(redSpawn,redBasePos,Quaternion.Euler(transform.rotation.eulerAngles));
 			Instantiate(blueSpawn,bluBasePos,Quaternion.Euler(transform.rotation.eulerAngles));
+
+			Vector3 redColPos = new Vector3(midNum+10,0,(chunkList[0].transform.position.z)-10); 
+			Vector3 bluColPos = new Vector3(midNum-10,0,(row*10));
+			Instantiate(redCollection,redColPos,Quaternion.Euler(transform.rotation.eulerAngles));
+			Instantiate(blueCollection,bluColPos,Quaternion.Euler(transform.rotation.eulerAngles));
 		}
 	}
 	

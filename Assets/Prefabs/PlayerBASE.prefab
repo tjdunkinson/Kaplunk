@@ -125,7 +125,7 @@ MonoBehaviour:
   invisible: {r: .389705896, g: .0401167758, b: .0401167758, a: 1}
   originTeam:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256
   myRespawner: {fileID: 0}
 --- !u!143 &14300000
 CharacterController:

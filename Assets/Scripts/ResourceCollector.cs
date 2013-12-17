@@ -7,10 +7,11 @@ public class ResourceCollector : MonoBehaviour {
 	public LayerMask enemy,friendly;
 	//private int myTeam,myEnemy;
 
+	private TextMesh textCount;
+
 	// Use this for initialization
 	void Start () {
-		//myEnemy = enemy;
-		//myTeam = friendly;
+		textCount = GetComponentInChildren<TextMesh> ();
 	
 	}
 	
@@ -22,11 +23,7 @@ public class ResourceCollector : MonoBehaviour {
 		{
 			if (resource > 0)
 			{
-				if (give.resource < 10)
-				{
-					give.resource++;
-					resource--;
-				}
+				miner.SendMessage ("Collect", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
@@ -38,5 +35,9 @@ public class ResourceCollector : MonoBehaviour {
 			resource += get.resource;
 			get.resource = 0;
 		}
+	}
+	void Update ()
+	{
+		textCount.text = resource.ToString ();	
 	}
 }

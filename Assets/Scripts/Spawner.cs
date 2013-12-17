@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour {
 	public int myPlayerNum;
 	public string Mutual, Team;
 	public Color lit, unlit;
-	public LayerMask camLM;
+	public LayerMask camLM,originLM;
 
 	public float setTimer = 5f;
 	public float penalty = 0.5f;
@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour {
 		myPlayerScript.invisible = unlit;
 		myPlayerScript.myRespawner = this.gameObject;
 		myPlayerScript.enabled = true;
+		myPlayerScript.originTeam = originLM;
 		GameObject spawnPlayer;
 		spawnPlayer = Instantiate (myPlayer, transform.position, Quaternion.Euler (myPlayer.transform.rotation.eulerAngles)) as GameObject;
 
