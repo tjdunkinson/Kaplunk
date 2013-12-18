@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a0ef284ae95b942ab1094d009840c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  column: 5
+  row: 5
+  chunkPrefabs:
+  - {fileID: 100194, guid: 4715243ac8fb7034ea41e3fe2693e4af, type: 2}
+  - {fileID: 100082, guid: e3bba9dd84fa5d1488e5240b18c7abaf, type: 2}
+  - {fileID: 100082, guid: 5bf41da7903ae3d409179b3309bde020, type: 2}
+  - {fileID: 100082, guid: 0646b8734f2232e4b9b92740aea61390, type: 2}
+  - {fileID: 100082, guid: 8a6311806ff6e9e42a93c292b6bff7a9, type: 2}
+  - {fileID: 100082, guid: 92f46508a697d714d8918f6a8cc78640, type: 2}
+  - {fileID: 100072, guid: 2f9cdad31be3051418a2c9f4ee20c434, type: 2}
+  - {fileID: 100038, guid: 3de863c15461c244b996ef4fef2c1560, type: 2}
+  - {fileID: 100038, guid: 52356f7a7cd19354391197720d664805, type: 2}
+  - {fileID: 100266, guid: 46a933656f20c01439b54dd2481a812e, type: 2}
+  - {fileID: 100038, guid: b2532470db6a1c145a94aba3ad572167, type: 2}
+  - {fileID: 100292, guid: cccf5feefd7949d4081c1f3a123fab88, type: 2}
+  chunkList: []
+  redSpawn: {fileID: 100272, guid: dd5b9d59eedd6ab4292fea374bc756d3, type: 2}
+  redCollection: {fileID: 100112, guid: e589f0cb89a09c0408ee34e4a9fc07ca, type: 2}
+  blueSpawn: {fileID: 100272, guid: 933dfbf7c4c9cac4bb33beac7737f040, type: 2}
+  blueCollection: {fileID: 100112, guid: 4a8af56225f80f14c9b4239ddbaff28b, type: 2}
+  rowHalf: 0
+  colHalf: 0
+  reverse: 0
+  listCount: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

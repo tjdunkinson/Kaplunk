@@ -93,7 +93,7 @@ public class player : MonoBehaviour {
 			}
 
 			//Places a bomb
-			if (Input.GetButtonDown("PlaceBomb0"+playerNum))
+			if (Input.GetButtonDown("Place0"+playerNum))
 			{
 				//Gets the tile below the player
 				RaycastHit hit;

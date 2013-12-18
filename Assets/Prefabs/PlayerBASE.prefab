@@ -115,7 +115,7 @@ MonoBehaviour:
   setSpeed: .100000001
   playerRotSpeed: 15
   setResourceMax: 10
-  playerNum: 1
+  playerNum: 0
   Health: 5
   resource: 0
   bomb: {fileID: 100000, guid: 42ba90547277a8649885771030ef33c0, type: 2}

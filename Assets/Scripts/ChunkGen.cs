@@ -2,21 +2,17 @@
 using System.Collections;
 
 public class ChunkGen : MonoBehaviour {
-	/// <summary>
-	/// This now works, just needs the chunks to rotate during the reverse step
-	/// of the generation, but this requires the way all the chunks are built 
-	/// to be re-done
-	/// </summary>
+
 	public int column, row;
 	public GameObject[] chunkPrefabs;
-	public GameObject [] chunkList;
 	public GameObject redSpawn,redCollection;
 	public GameObject blueSpawn,blueCollection;
-	public int rowHalf,colHalf;
 
+	private GameObject [] chunkList;
+	private int rowHalf,colHalf;
 	private bool halfHit = false;
-	public bool reverse = false;
-	public int listCount;
+	private bool reverse = false;
+	private int listCount;
 	
 	
 	// Use this for initialization
@@ -71,6 +67,7 @@ public class ChunkGen : MonoBehaviour {
 		{
 			int revListCount = listCount;
 			Vector3 revPlacement = chunkList[listCount].transform.position;
+			Vector3 revPlaceRot = new Vector3();
 			int midNum = Mathf.RoundToInt((revPlacement.x));
 			revListCount--;
 			GameObject revChunkPlace;
@@ -83,8 +80,9 @@ public class ChunkGen : MonoBehaviour {
 				revChunkPick = chunkList[revListCount];
 				revPlacement = revChunkPick.transform.position;
 				revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x);
-				//Vector3 revPlaceRot = (revChunkPick.transform.localRotation.eulerAngles.y + 180);
-				revChunkPlace = Instantiate(revChunkPick,revPlacement,Quaternion.Euler(revChunkPick.transform.rotation.eulerAngles)) as GameObject;
+				revPlaceRot = revChunkPick.transform.rotation.eulerAngles;
+				revPlaceRot.y += 180;
+				revChunkPlace = Instantiate(revChunkPick,revPlacement,Quaternion.Euler(revPlaceRot)) as GameObject;
 				revChunkPlace.name = "Chunk "+midNum/10+", "+c;
 				revChunkPlace.transform.parent = this.transform;
 				chunkList[listCount] = revChunkPlace;
@@ -102,8 +100,9 @@ public class ChunkGen : MonoBehaviour {
 					revPlacement = revChunkPick.transform.position;
 					revPlacement.x = (((midNum - revPlacement.x)*2)+revPlacement.x);
 					revPlacement.z = (((midNum - revPlacement.z)*2)+revPlacement.z);
-					//Vector3 revPlaceRot = (revChunkPick.transform.localRotation.eulerAngles.y + 180);
-					revChunkPlace = Instantiate(revChunkPick,revPlacement,Quaternion.Euler(revChunkPick.transform.rotation.eulerAngles)) as GameObject;
+					revPlaceRot = revChunkPick.transform.rotation.eulerAngles;
+					revPlaceRot.y += 180;
+					revChunkPlace = Instantiate(revChunkPick,revPlacement,Quaternion.Euler(revPlaceRot)) as GameObject;
 					revChunkPlace.name = "Chunk "+(r+(midNum/10))+", "+c;
 					revChunkPlace.transform.parent = this.transform;
 					chunkList[listCount] = revChunkPlace;
@@ -112,7 +111,6 @@ public class ChunkGen : MonoBehaviour {
 			}
 			Vector3 redBasePos = new Vector3(midNum,0,(chunkList[0].transform.position.z)-10); 
 			Vector3 bluBasePos = new Vector3(midNum,0,(row*10));
-
 			Instantiate(redSpawn,redBasePos,Quaternion.Euler(transform.rotation.eulerAngles));
 			Instantiate(blueSpawn,bluBasePos,Quaternion.Euler(transform.rotation.eulerAngles));
 

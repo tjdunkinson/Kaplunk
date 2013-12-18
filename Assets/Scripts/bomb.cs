@@ -33,6 +33,7 @@ public class bomb : MonoBehaviour {
 		int i =0;
 		while(i < hitObjects.Length)
 		{
+			//print (hitObjects[i].name);
 			if (hitObjects[i].tag == "Wall")
 			{
 				hitObjects[i].SendMessage("Destroy",options);

@@ -30,7 +30,7 @@ GameObject:
   - 124: {fileID: 12400000}
   - 114: {fileID: 11400000}
   m_Layer: 8
-  m_Name: PlayerCam01
+  m_Name: PlayerCamBASE
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cca9b28a333404dab1f4cee5cccb17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 1
+  playerNum: 0
   player: {fileID: 0}
   Distance: 5
   lerpSpeed: 5

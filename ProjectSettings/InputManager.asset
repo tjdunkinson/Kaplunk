@@ -5,8 +5,8 @@ InputManager:
   m_ObjectHideFlags: 0
   m_Axes:
   - serializedVersion: 3
-    m_Name: Horizontal01
-    descriptiveName: 
+    m_Name: Horizontal00
+    descriptiveName: Debug
     descriptiveNegativeName: 
     negativeButton: a
     positiveButton: d
@@ -21,8 +21,8 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Vertical01
-    descriptiveName: 
+    m_Name: Vertical00
+    descriptiveName: Debug
     descriptiveNegativeName: 
     negativeButton: s
     positiveButton: w
@@ -37,8 +37,8 @@ InputManager:
     axis: 1
     joyNum: 1
   - serializedVersion: 3
-    m_Name: PlaceBomb01
-    descriptiveName: 
+    m_Name: Place00
+    descriptiveName: Debug
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: e
@@ -53,8 +53,8 @@ InputManager:
     axis: 1
     joyNum: 1
   - serializedVersion: 3
-    m_Name: EnableLight01
-    descriptiveName: 
+    m_Name: EnableLight00
+    descriptiveName: Debug
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: q
@@ -69,8 +69,8 @@ InputManager:
     axis: 1
     joyNum: 1
   - serializedVersion: 3
-    m_Name: Attack01
-    descriptiveName: 
+    m_Name: Attack00
+    descriptiveName: Debug
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: space
@@ -84,3 +84,163 @@ InputManager:
     type: 0
     axis: 1
     joyNum: 1
+  - serializedVersion: 3
+    m_Name: Horizontal01
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Vertical01
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 1
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Place01
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: EnableLight01
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Attack01
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: Horizontal02
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Vertical02
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 1
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Place02
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 1
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: EnableLight02
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 1
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: Attack02
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 3
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 5
+    dead: .25
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 1
+    joyNum: 2
